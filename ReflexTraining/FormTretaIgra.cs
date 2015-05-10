@@ -257,41 +257,44 @@ namespace ReflexTraining
 
         private void pnlIgra_MouseClick(object sender, MouseEventArgs e)
         {
-            bool found = false;
-            CircleTreta temp = null;
-            foreach (CircleTreta krug in krugovi)
+            if (krugovi.Count > 0)
             {
-                if (krug.Clicked(e.X, e.Y))
+                bool found = false;
+                CircleTreta temp = null;
+                foreach (CircleTreta krug in krugovi)
                 {
-                    krug.isClicked = true;
-                    krug.changeBrush(pnlIgra.BackColor);
-                    generateNewCircleAfterClick();
-                    pnlIgra.Invalidate();
-                    found = true;
-                    poeni += 300;
-                    temp = krug;
-                    break;
+                    if (krug.Clicked(e.X, e.Y))
+                    {
+                        krug.isClicked = true;
+                        krug.changeBrush(pnlIgra.BackColor);
+                        generateNewCircleAfterClick();
+                        pnlIgra.Invalidate();
+                        found = true;
+                        poeni += 300;
+                        temp = krug;
+                        break;
+                    }
                 }
-            }
 
-            if (temp != null)
-                krugovi.Remove(temp);
+                if (temp != null)
+                    krugovi.Remove(temp);
 
-            if (found == false)
-            {
-                if (hard == true)
+                if (found == false)
                 {
-                    players.Add(new Player(Form1.Ime, poeni, 2));
-                    serialize();
-                    najdobarRezultat();
-                    lblPrethodniPoeni.Text = poeni.ToString();
-                    stopGame();
+                    if (hard == true)
+                    {
+                        players.Add(new Player(Form1.Ime, poeni, 2));
+                        serialize();
+                        najdobarRezultat();
+                        lblPrethodniPoeni.Text = poeni.ToString();
+                        stopGame();
+                    }
+                    else
+                        poeni -= 100;
                 }
-                else
-                    poeni -= 100;
-            }
 
-            lblPoeni.Text = poeni.ToString();
+                lblPoeni.Text = poeni.ToString();
+            }
         }
 
         private void btnNewGame_Click(object sender, EventArgs e)

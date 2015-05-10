@@ -265,28 +265,31 @@ namespace ReflexTraining
 
         private void pnlIgra_MouseClick(object sender, MouseEventArgs e)
         {
-            bool found = false;
-            Circle temp = null;
-            foreach (Circle krug in krugovi)
+            if (krugovi.Count > 0)
             {
-                if (krug.Clicked(e.X, e.Y))
+                bool found = false;
+                Circle temp = null;
+                foreach (Circle krug in krugovi)
                 {
-                    krug.isClicked = true;
-                    krug.changeBrush(pnlIgra.BackColor);
-                    pnlIgra.Invalidate();
-                    found = true;
-                    poeni += 100;
-                    temp = krug;
-                    break;
+                    if (krug.Clicked(e.X, e.Y))
+                    {
+                        krug.isClicked = true;
+                        krug.changeBrush(pnlIgra.BackColor);
+                        pnlIgra.Invalidate();
+                        found = true;
+                        poeni += 100;
+                        temp = krug;
+                        break;
+                    }
                 }
+
+                if (temp != null)
+                    krugovi.Remove(temp);
+
+                if (found == false)
+                    poeni -= 100;
+                lblPoeni.Text = poeni.ToString();
             }
-
-            if (temp != null)
-                krugovi.Remove(temp);
-
-            if (found == false)
-                poeni -= 100;
-            lblPoeni.Text = poeni.ToString();
         }
 
         public void ChangeSpeed()

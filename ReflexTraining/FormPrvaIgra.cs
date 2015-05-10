@@ -63,7 +63,6 @@ namespace ReflexTraining
 
         public void newGame()
         {
-            circle = new Circle(pnlIgra.Width / 2, pnlIgra.Height / 2);
             graphics = CreateGraphics();
             Show();
 
@@ -94,6 +93,7 @@ namespace ReflexTraining
             if (sekundiZaIgra == 1)
             {
                 isFirst = false;
+                circle = new Circle(pnlIgra.Width / 2, pnlIgra.Height / 2);
                 pnlIgra.Invalidate();
                 timer2.Start();
                 timer3.Stop();
@@ -201,9 +201,9 @@ namespace ReflexTraining
                     sumaNaKlikoj.Add(1000);
                     stopWatch.Reset();
                 }
-            }
 
-            presmetajProsek();
+                presmetajProsek();
+            }
 
             if (obidiZaIgra < 10)
                 reset();
@@ -251,7 +251,7 @@ namespace ReflexTraining
             if (circle != null)
                 circle.changeToRed();
 
-            if (hard)
+            if (hard && circle != null)
                 circle.changePosition(pnlIgra.Width / 2, pnlIgra.Height / 2);
 
             randomNumber = random.Next(3, 8);
