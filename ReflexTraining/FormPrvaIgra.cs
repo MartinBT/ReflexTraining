@@ -19,7 +19,6 @@ namespace ReflexTraining
         Timer timer, timer2, timer3;
         int secondsCounter, randomNumber, obidiZaIgra, sekundiZaIgra, averageSuma;
         Random random;
-        Graphics graphics;
         Circle circle;
         bool isFirst, hard;
         List<int> sumaNaKlikoj;
@@ -63,9 +62,6 @@ namespace ReflexTraining
 
         public void newGame()
         {
-            graphics = CreateGraphics();
-            Show();
-
             lblGameStart.Text = "Game will Start in " + sekundiZaIgra + " seconds";
             lblAverage.Text = "";
 

@@ -14,7 +14,6 @@ namespace ReflexTraining
 {
     public partial class FormVtoraIgra : Form
     {
-        Graphics graphics;
         Random random;
         Timer timer, timer2, timer3;
         int TIMER_INTERVAL;
@@ -69,9 +68,6 @@ namespace ReflexTraining
 
         public void newGame()
         {
-            graphics = CreateGraphics();
-            Show();
-
             newGameStarted = true;
 
             lblStartGame.Text = "Game starts in 2 seconds";

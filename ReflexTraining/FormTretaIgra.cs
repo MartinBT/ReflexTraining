@@ -14,7 +14,6 @@ namespace ReflexTraining
 {
     public partial class FormTretaIgra : Form
     {
-        Graphics graphics;
         Random random;
         Timer timer, timer2, timer3, timer4;
         int pnlWidth, pnlHeight, poeni, TIMER_INTERVAL, randomX, randomY, timeInt;
@@ -59,9 +58,6 @@ namespace ReflexTraining
 
         public void newGame()
         {
-            graphics = CreateGraphics();
-            Show();
-
             lblStartGame.Text = "Game will start in " + timeInt.ToString() + " seconds";  
 
             if (hard == true)
